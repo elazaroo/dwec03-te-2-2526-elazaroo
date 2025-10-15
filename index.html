@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Caza del Emoji</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Pantalla 1: Login -->
+        <div class="screen active" id="login-screen">
+            <div class="emoji-title">🎯</div>
+            <h1>La Caza del Emoji</h1>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Nombre de usuario</label>
+                    <input type="text" id="username" name="username" placeholder="Ingresa tu nombre" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Tu contraseña secreta" required>
+                </div>
+                
+                <div class="error-message" id="login-error"></div>
+                
+                <button type="submit" class="btn">🚀 Entrar a la Caza</button>
+            </form>
+        </div>
+
+        <!-- Pantalla 2: Bienvenida -->
+        <div class="screen" id="welcome-screen">
+            <h2>¡Bienvenido a La Caza del Emoji!</h2>
+            <div class="emoji-title">🏹💰</div>
+            
+            <div class="instructions">
+                <strong>📋 Instrucciones:</strong>
+                Observa atentamente. Cuando el emoji objetivo aparezca, haz clic en su ubicación antes de que cambie. Tienes 3 fallos permitidos. ¡Sé rápido y preciso!
+            </div>
+            
+            <div class="form-group">
+                <label for="difficulty">🎚️ Selector de Nivel</label>
+                <select id="difficulty">
+                    <option value="1500">🐢 Principiante (1.5s)</option>
+                    <option value="1000" selected>🚶 Intermedio (1.0s)</option>
+                    <option value="500">🏃 Avanzado (0.5s)</option>
+                </select>
+            </div>
+            
+            <button class="btn" id="start-game-btn">🎯 ¡A Cazar Emojis!</button>
+        </div>
+
+        <!-- Pantalla 3: Juego -->
+        <div class="screen" id="game-screen">
+            <h2>🎮 En Acción</h2>
+            
+            <div class="target-emoji">
+                <div class="info-label">Emoji Objetivo:</div>
+                💰
+            </div>
+            
+            <div class="game-info">
+                <div class="info-card">
+                    <div class="info-label">Puntuación</div>
+                    <div class="info-value" id="score-value">0</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Tiempo</div>
+                    <div class="info-value" id="time-value">30s</div>
+                </div>
+            </div>
+            
+            <div class="lives">
+                <span class="lives-label">Vidas Restantes:</span>
+                <span id="lives-display">❤️ ❤️ ❤️</span>
+            </div>
+            
+            <div class="game-grid" id="game-grid">
+                <!-- Las celdas se generarán dinámicamente -->
+            </div>
+            
+            <button class="btn" id="end-game-btn">🏁 Terminar Partida</button>
+        </div>
+
+        <!-- Pantalla 4: Resultado -->
+        <div class="screen" id="result-screen">
+            <div class="emoji-title" id="result-emoji">🏆</div>
+            <h2 id="result-title">¡Máster Cazador!</h2>
+            
+            <div class="result-stats">
+                <ul id="result-stats-list">
+                    <li><strong>Puntuación Final:</strong> <span id="final-score">0</span> puntos</li>
+                    <li><strong>Nivel de Dificultad:</strong> <span id="final-difficulty">Intermedio</span></li>
+                    <li><strong>Tiempo Total:</strong> <span id="final-time">0</span> segundos</li>
+                    <li><strong>Precisión:</strong> <span id="final-precision">0%</span></li>
+                </ul>
+            </div>
+            
+            <button class="btn" id="restart-btn">🔄 Nueva Partida</button>
+            <button class="btn btn-secondary" id="logout-btn">🚪 Salir</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/utils/StorageManager.js"></script>
+    <script src="js/models/User.js"></script>
+    <script src="js/models/Game.js"></script>
+    <script src="js/controllers/LoginController.js"></script>
+    <script src="js/controllers/WelcomeController.js"></script>
+    <script src="js/controllers/GameController.js"></script>
+    <script src="js/controllers/ResultController.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
